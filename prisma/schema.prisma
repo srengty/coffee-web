@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  pwd       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@map("users")
+}
+
+model Banners {
+  id        Int      @id @default(autoincrement())
+  imageUrl  String
+  link      String?
+  title     String?
+  description String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@map("banners")
+}
+
+model Stories {
+  id        Int      @id @default(autoincrement())
+  imageUrl  String
+  title     String
+  content   String
+  link      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@map("stories")
+}
+
+model StoreApps{
+  id        Int      @id @default(autoincrement())
+  name      String
+  description String?
+  link      String?
+  feature_title String?
+  feature_description String?
+  qr_code String?
+  link_appstore String?
+  link_playstore String?
+  imageUrl  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@map("store_apps")
+}
+
+model Careers {
+  id        Int      @id @default(autoincrement())
+  title     String
+  description String?
+  link      String?
+  backgroundUrl String?
+  coverUrl  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@map("careers")
+}
