@@ -7,7 +7,7 @@ export default function Menu() {
       <ul className='flex gap-2 bg-amber-200 p-2'>
         <li><Link href="/">Home</Link></li>
         <li><Link href="/counter">Counter</Link></li>
-        <li><Link href="/contact">Contact</Link></li>
+        <li><Link href="/property">Props</Link></li>
       </ul>
     </div>
   )
